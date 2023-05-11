@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
       decoration: InputDecoration(
           prefixIcon:Icon(Icons.person_outline,color: Color.fromRGBO(0, 0, 0, 1.0),),
           contentPadding: EdgeInsets.fromLTRB(20,15,20,15),
-          hintText: "Email",
+          hintText: "Username",
           hintStyle: TextStyle(fontFamily: 'Arimo'),
           border:  InputBorder.none,
 
@@ -120,24 +120,62 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: SingleChildScrollView(
           child:Padding(
-            padding: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.all(20.0),
             child: Form(
               key: _formkey ,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
-                      height: 300,
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
                       child: Image.asset("assets/loginpagecar.jpg",
-                        fit: BoxFit.fitWidth,
+                        fit: BoxFit.fill,
+                        height: 200,
+                        width: 500,
                       )),
+                  SizedBox(height: 15),
                   emailField,
                   SizedBox(height: 25),
                   passwordField,
                   SizedBox(height: 35),
                   loginButton,
-                  SizedBox(height: 15),
+                  SizedBox(height: 25,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Material(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color.fromRGBO(237, 237, 235, 1.0),
+                        child: MaterialButton(
+                          padding: EdgeInsets.fromLTRB(10,15,10,15),
+                          splashColor: Colors.black.withOpacity(0.2),
+                          onPressed:(){
+
+                          } ,
+                          child: Image.asset("assets/img.png",
+                            height: 27,
+                            width: 120,
+                          ) ,
+                        ),
+                      ),
+                      SizedBox(width: 5,),
+                      Material(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color.fromRGBO(237, 237, 235, 1.0),
+                        child: MaterialButton(
+                          padding: EdgeInsets.fromLTRB(10,15,10,15),
+                          splashColor: Colors.black.withOpacity(0.2),
+                          onPressed:(){
+
+                          } ,
+                          child: Image.asset("assets/img_2.png",
+                            height: 27,
+                            width: 120,
+                          ) ,
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -147,9 +185,10 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(" SignUp",
 
                             style: TextStyle(color:Color.fromRGBO(249, 177, 122, 1.0),fontFamily:'Arimo',fontWeight: FontWeight.bold,fontSize: 14)),
-                      )
+                      ),
+
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
