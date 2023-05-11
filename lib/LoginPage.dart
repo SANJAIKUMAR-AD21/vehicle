@@ -139,10 +139,8 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       Text("Don't have an account?",style: TextStyle(fontFamily:'Arimo',fontWeight:FontWeight.w900)),
                       GestureDetector(onTap: (){
-
-
                       },
-                        child: Text(" HII",
+                        child: Text(" SignUp",
 
                             style: TextStyle(color:Colors.blue[800],fontFamily:'Arimo',fontWeight: FontWeight.bold,fontSize: 14)),
                       )
