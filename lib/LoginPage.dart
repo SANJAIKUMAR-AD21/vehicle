@@ -14,7 +14,11 @@ class _LoginPageState extends State<LoginPage> {
   bool _isHidden=true;
   @override
   Widget build(BuildContext context) {
-    final emailField = TextFormField(
+    final emailField = Material(
+        elevation: 2,
+        borderRadius: BorderRadius.circular(20),
+        color: Color.fromRGBO(219, 223, 244, 1.0),
+        child:TextFormField(
       autofocus: false,
       controller: emailcontroller,
       style: TextStyle(fontFamily: 'Arimo'),
@@ -34,17 +38,20 @@ class _LoginPageState extends State<LoginPage> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-          prefixIcon:Icon(Icons.mail,color: Color.fromRGBO(77,0,114,1),),
+          prefixIcon:Icon(Icons.person_outline,color: Color.fromRGBO(0, 0, 0, 1.0),),
           contentPadding: EdgeInsets.fromLTRB(20,15,20,15),
           hintText: "Email",
           hintStyle: TextStyle(fontFamily: 'Arimo'),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          )
+          border:  InputBorder.none,
 
       ),
+    )
     );
-    final passwordField = TextFormField(
+    final passwordField = Material(
+      elevation: 2,
+        borderRadius: BorderRadius.circular(20),
+      color: Color.fromRGBO(219, 223, 244, 1.0),
+      child:TextFormField(
       autofocus: false,
       controller: passwordcontroller,
 
@@ -65,7 +72,8 @@ class _LoginPageState extends State<LoginPage> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key,color: Color.fromRGBO(77,0,114,1),),
+          prefixIcon: Icon(Icons.lock_outline_rounded,color: Color.fromRGBO(
+              0, 0, 0, 1.0),),
           contentPadding: EdgeInsets.fromLTRB(20,15,20,15),
           hintText: "Password",
           hintStyle: TextStyle(fontFamily: 'Arimo'),
@@ -75,19 +83,18 @@ class _LoginPageState extends State<LoginPage> {
               _isHidden
                   ?Icons.visibility_off
                   :Icons.visibility,
-              color: Color.fromRGBO(77,0,114,1),
+              color: Color.fromRGBO(0, 0, 0, 1.0),
             ),
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          )
+          border: InputBorder.none,
 
       ),
+      )
     );
     final loginButton = Material(
-      elevation: 0.0,
+      elevation: 2.0,
       borderRadius: BorderRadius.circular(10),
-      color: Color.fromRGBO(8,47,72,1),
+      color: Color.fromRGBO(249, 177, 122, 1.0),
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(10,15,10,15),
         minWidth: MediaQuery.of(context).size.width,
@@ -103,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
           }
         } ,
         child: Text("Login",textAlign: TextAlign.center,
-          style:TextStyle(fontSize: 15,fontFamily:'Arimo',color: Colors.white,fontWeight: FontWeight.bold) ,
+          style:TextStyle(fontSize: 15,fontFamily:'Arimo',color: Colors.black,fontWeight: FontWeight.bold) ,
         ),
       ),
 
@@ -121,13 +128,10 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
-                      height: 250,
-                      child: Image.asset("assets/bitlogo.png",
-                        fit: BoxFit.contain,
+                      height: 300,
+                      child: Image.asset("assets/loginpagecar.jpg",
+                        fit: BoxFit.fitWidth,
                       )),
-                  SizedBox(height: 25),
-                  Text("Enter Your Bitsathy Account",style: TextStyle(fontSize: 17,fontFamily: 'Arimo',fontWeight: FontWeight.bold,color:Color.fromRGBO(8,47,72,1), ),),
-                  SizedBox(height: 25),
                   emailField,
                   SizedBox(height: 25),
                   passwordField,
@@ -142,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                         child: Text(" SignUp",
 
-                            style: TextStyle(color:Colors.blue[800],fontFamily:'Arimo',fontWeight: FontWeight.bold,fontSize: 14)),
+                            style: TextStyle(color:Color.fromRGBO(249, 177, 122, 1.0),fontFamily:'Arimo',fontWeight: FontWeight.bold,fontSize: 14)),
                       )
                     ],
                   )
