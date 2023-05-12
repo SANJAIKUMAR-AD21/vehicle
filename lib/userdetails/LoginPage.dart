@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vehicle/userdetails/SignUp.dart';
+import 'package:vehicle/userdetails/passwordreset/PasswordReset.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -160,7 +162,18 @@ class _LoginPageState extends State<LoginPage> {
                   emailField,
                   SizedBox(height: 25),
                   passwordField,
-                  SizedBox(height: 35),
+                  SizedBox(height: 8,),
+                  Row(
+                    children:[
+                      SizedBox(width: 195,),
+                      InkWell(child:Text('Forgot password?',style: TextStyle(fontFamily:'Arimo',color: Color.fromRGBO(249, 177, 122, 1.0),fontWeight: FontWeight.bold),),
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PasswordReset()));
+                      },
+                      ),
+        ]
+                  ),
+                  SizedBox(height: 15),
                   loginButton,
                   SizedBox(height: 12),
                   Row(

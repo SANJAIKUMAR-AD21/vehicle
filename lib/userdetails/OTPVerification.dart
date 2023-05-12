@@ -221,10 +221,19 @@ class _OTPVerificationState extends State<OTPVerification> {
         minWidth: MediaQuery.of(context).size.width,
 
         onPressed:() {
-            (otpmerge(first.text,second.text,third.text,fourth.text).compareTo('1234')==0)?
-              print('true'):print('false');
+    (otpmerge(first.text,second.text,third.text,fourth.text).compareTo('1234')==0)?
+    Fluttertoast.showToast(msg: 'OTP Verified Successfully',):Fluttertoast.showToast(msg: 'Invalid OTP ! !');
 
-        } ,
+     const AlertDialog(
+    title: Text("Success"),
+    titleTextStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),
+    backgroundColor: Colors.greenAccent,
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(20))
+    ),
+    content: Text("Save successfully"),
+    );
+    },
         child: Text("Verify",textAlign: TextAlign.center,
           style:TextStyle(fontSize: 15,fontFamily:'Arimo',color: Colors.black,fontWeight: FontWeight.bold) ,
 
