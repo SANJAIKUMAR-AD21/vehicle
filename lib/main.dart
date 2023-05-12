@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vehicle/LoginPage.dart';
+import 'package:vehicle/userdetails/LoginPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +11,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Map<int, Color> color =
+    {
+      50:Color.fromRGBO(255,255,255, .1),
+      100:Color.fromRGBO(255,255,255, .2),
+      200:Color.fromRGBO(255,255,255, .3),
+      300:Color.fromRGBO(255,255,255, .4),
+      400:Color.fromRGBO(255,255,255, .5),
+      500:Color.fromRGBO(255,255,255, .6),
+      600:Color.fromRGBO(255,255,255, .7),
+      700:Color.fromRGBO(255,255,255, .8),
+      800:Color.fromRGBO(255,255,255, .9),
+      900:Color.fromRGBO(255,255,255, 1),
+    };
+    MaterialColor colorCustom = MaterialColor(0xff082f48, color);
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'MyVec',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
@@ -24,7 +38,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: colorCustom,
       ),
       home: const LoginPage(),
     );

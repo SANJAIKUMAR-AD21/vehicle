@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vehicle/userdetails/SignUp.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -81,8 +82,8 @@ class _LoginPageState extends State<LoginPage> {
             onTap: _toggleview,
             child: Icon(
               _isHidden
-                  ?Icons.visibility_off
-                  :Icons.visibility,
+                  ?Icons.visibility_off_outlined
+                  :Icons.visibility_outlined,
               color: Color.fromRGBO(0, 0, 0, 1.0),
             ),
           ),
@@ -93,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
     );
     final loginButton = Material(
       elevation: 2.0,
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(25),
       color: Color.fromRGBO(249, 177, 122, 1.0),
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(10,15,10,15),
@@ -116,9 +117,32 @@ class _LoginPageState extends State<LoginPage> {
 
     );
     return Scaffold(
+      appBar: AppBar(title:
+      Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children:[
+            SizedBox(height: 5,),
+            Row(
+              children: [
+                Text('Login',style: TextStyle(fontSize: 16,fontFamily: 'Arimo',fontWeight: FontWeight.bold,color: Colors.black),),
+                SizedBox(width: 2,),
+                Icon(Icons.person_outline,color: Colors.black,)
+              ],
+            ),
+            SizedBox(height: 2,),
+            Text('Welcome to MyVec',style: TextStyle(fontSize: 12,fontFamily: 'Arimo',fontWeight: FontWeight.w100,color: Colors.black45),textAlign: TextAlign.left,)
+          ]
+      ),
+        centerTitle: false,
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 80,
+        shadowColor: Colors.white,
+      ),
       backgroundColor: Colors.white,
-      body: Center(
-        child: SingleChildScrollView(
+      body:  SingleChildScrollView(
           child:Padding(
             padding: const EdgeInsets.all(20.0),
             child: Form(
@@ -138,49 +162,50 @@ class _LoginPageState extends State<LoginPage> {
                   passwordField,
                   SizedBox(height: 35),
                   loginButton,
-                  SizedBox(height: 25,),
+                  SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Material(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromRGBO(237, 237, 235, 1.0),
-                        child: MaterialButton(
-                          padding: EdgeInsets.fromLTRB(10,15,10,15),
-                          splashColor: Colors.black.withOpacity(0.2),
-                          onPressed:(){
-
-                          } ,
-                          child: Image.asset("assets/img.png",
-                            height: 27,
-                            width: 120,
-                          ) ,
-                        ),
-                      ),
-                      SizedBox(width: 5,),
-                      Material(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromRGBO(237, 237, 235, 1.0),
-                        child: MaterialButton(
-                          padding: EdgeInsets.fromLTRB(10,15,10,15),
-                          splashColor: Colors.black.withOpacity(0.2),
-                          onPressed:(){
-
-                          } ,
-                          child: Image.asset("assets/img_2.png",
-                            height: 27,
-                            width: 120,
-                          ) ,
-                        ),
-                      )
+                      Expanded(child:
+                      Divider(color: Colors.black38,indent: 10,endIndent: 10,),),
+                      Text('Or',style: TextStyle(fontWeight: FontWeight.normal,color: Colors.black38,fontFamily: 'Arimo'),),
+                      Expanded(child:
+                      Divider(color: Colors.black38,indent: 10,endIndent: 10))
                     ],
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: 12),
+                  Material(
+                    elevation: 2,
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color.fromRGBO(237, 237, 235, 1.0),
+                      child: MaterialButton(
+                        padding: EdgeInsets.fromLTRB(10,15,10,15),
+                        splashColor: Colors.black.withOpacity(0.2),
+                        onPressed:(){
+
+                        } ,
+                        child: Row(
+
+                            children:[
+                              SizedBox(width: 15,),
+                              Image.asset("assets/img.png",
+                                height: 27,
+                              ) ,
+                              SizedBox(width: 35,),
+                              Text("Continue with Google",textAlign: TextAlign.center,
+                                style:TextStyle(fontSize: 15,fontFamily:'Arimo',color: Color.fromRGBO(0, 0, 0, 0.60),fontWeight: FontWeight.bold) ,
+                              ),
+                            ]
+                        ),
+                      )
+                  ),
+                  SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text("Don't have an account?",style: TextStyle(fontFamily:'Arimo',fontWeight:FontWeight.w900)),
                       GestureDetector(onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                       },
                         child: Text(" SignUp",
 
@@ -195,7 +220,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
 
         ),
-      ),
 
 
     );
