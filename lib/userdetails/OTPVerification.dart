@@ -26,21 +26,7 @@ class _OTPVerificationState extends State<OTPVerification> {
     thirdNode = FocusNode();
     fourthNode = FocusNode();
   }
-  @override
-  void dispose() {
 
-    firstNode.dispose();
-    secondNode.dispose();
-    thirdNode.dispose();
-    fourthNode.dispose();
-    first.dispose();
-    second.dispose();
-    first.dispose();
-    second.dispose();
-    third.dispose();
-    fourth.dispose();
-    super.dispose();
-  }
   @override
   Widget build(BuildContext context) {
     final firstfield= Material(
@@ -224,14 +210,46 @@ class _OTPVerificationState extends State<OTPVerification> {
     (otpmerge(first.text,second.text,third.text,fourth.text).compareTo('1234')==0)?
     Fluttertoast.showToast(msg: 'OTP Verified Successfully',):Fluttertoast.showToast(msg: 'Invalid OTP ! !');
 
-     const AlertDialog(
-    title: Text("Success"),
-    titleTextStyle: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),
-    backgroundColor: Colors.greenAccent,
-    shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(20))
-    ),
-    content: Text("Save successfully"),
+    showDialog(context: context, builder: (context)
+    {
+      return AlertDialog(
+        content: Container(
+          height: 200,
+          child:Column(
+            children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children:[
+                    Text(''),
+                    InkWell(
+                      child:
+                      Icon(Icons.close,color: Colors.redAccent,),
+                      onTap: (){
+                        Navigator.of(context).pop();
+                      },
+                    ),
+
+                  ]
+              ),
+
+              SizedBox(height: 15),
+              Image.asset('assets/tick.png',
+                height: 80,
+                width: 80,
+              ),
+              SizedBox(height: 15,),
+              Text("Account created",style: TextStyle(fontSize: 18,fontFamily: 'Arimo',color:Color.fromRGBO(
+                  0, 0, 0, 1.0), ),textAlign: TextAlign.center,),
+              SizedBox(height: 3,),
+              Text("successfully",style: TextStyle(fontSize: 19,fontFamily: 'Arimo',color:Color.fromRGBO(
+                  0, 0, 0, 1.0), ),textAlign: TextAlign.center,),
+            ],
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+      );
+    }
     );
     },
         child: Text("Verify",textAlign: TextAlign.center,
