@@ -79,17 +79,17 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Color.fromRGBO(219, 223, 244, 1.0),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business,color:Colors.black,),
+            icon: Icon(Icons.chat_outlined,color:Colors.black,),
             label: 'Business',
             backgroundColor: Color.fromRGBO(219, 223, 244, 1.0),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school,color:Colors.black,),
+            icon: Icon(Icons.dashboard_outlined,color:Colors.black,),
             label: 'School',
             backgroundColor: Color.fromRGBO(219, 223, 244, 1.0),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school,color:Colors.black,),
+            icon: Icon(Icons.menu,color:Colors.black,),
             label: 'School',
             backgroundColor: Color.fromRGBO(219, 223, 244, 1.0),
           ),
