@@ -277,7 +277,7 @@ class _SignUpState extends State<SignUp> {
         elevation: 0.0,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        toolbarHeight: 80,
+        toolbarHeight: 60,
         shadowColor: Colors.white,
       ),
       backgroundColor: Colors.white,
@@ -306,7 +306,7 @@ class _SignUpState extends State<SignUp> {
                     SizedBox(height: 20),
                     signupButton,
 
-                    SizedBox(height: 12),
+                    SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -317,7 +317,7 @@ class _SignUpState extends State<SignUp> {
                         Divider(color: Colors.black38,indent: 10,endIndent: 10))
                       ],
                     ),
-                    SizedBox(height: 12),
+                    SizedBox(height: 8),
                     Material(
                         elevation: 2,
                         borderRadius: BorderRadius.circular(20),
@@ -343,7 +343,22 @@ class _SignUpState extends State<SignUp> {
                           ),
                         )
                     ),
+
                     SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Already have an account?",style: TextStyle(fontFamily:'Arimo',fontWeight:FontWeight.w900)),
+                        GestureDetector(onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
+                        },
+                          child: Text(" Login",
+
+                              style: TextStyle(color:Color.fromRGBO(249, 177, 122, 1.0),fontFamily:'Arimo',fontWeight: FontWeight.bold,fontSize: 14)),
+                        ),
+
+                      ],
+                    ),
 
                   ],
                 ),

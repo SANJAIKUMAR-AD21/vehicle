@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vehicle/mainpage/HomeScreen.dart';
 import 'package:vehicle/userdetails/SignUp.dart';
 import 'package:vehicle/userdetails/passwordreset/PasswordReset.dart';
 
@@ -109,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
 
           }
           else {
-
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
           }
         } ,
         child: Text("Login",textAlign: TextAlign.center,
@@ -140,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
         elevation: 0.0,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        toolbarHeight: 80,
+        toolbarHeight: 70,
         shadowColor: Colors.white,
       ),
       backgroundColor: Colors.white,

@@ -26,7 +26,6 @@ class _OTPVerificationState extends State<OTPVerification> {
     thirdNode = FocusNode();
     fourthNode = FocusNode();
   }
-
   @override
   Widget build(BuildContext context) {
     final firstfield= Material(
@@ -102,7 +101,6 @@ class _OTPVerificationState extends State<OTPVerification> {
 
           }),
           onSaved: (value)
-
           {
             second.text=value!;
 
