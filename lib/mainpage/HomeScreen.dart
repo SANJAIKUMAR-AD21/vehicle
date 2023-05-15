@@ -42,13 +42,36 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: Drawer(
-        child: Column(
+      endDrawer: ClipRRect(
+        borderRadius: BorderRadius.horizontal(left: Radius.circular(75),),
+        child:Drawer(
+          width: 250,
+        child: Padding(
+        padding: EdgeInsets.all(20),
+        child:Column(
           children: [
-            SizedBox(height: 50,),
-            Text('PROFILE')
+            SizedBox(height: 100,),
+            Text('PROFILE',style: TextStyle(fontSize:18,fontFamily: 'Arimo', color: Color.fromRGBO(0,45, 50, 0.50),fontWeight: FontWeight.bold),),
+            Divider(color: Colors.black12,indent: 10,endIndent: 10),
+            Text('LANGUAGE',style: TextStyle(fontSize:18,fontFamily: 'Arimo',color: Color.fromRGBO(0,45, 50, 0.50),fontWeight: FontWeight.bold),),
+            Divider(color: Colors.black12,indent: 10,endIndent: 10),
+            Text('ABOUT US',style: TextStyle(fontSize:18,fontFamily: 'Arimo',color: Color.fromRGBO(0,45, 50, 0.50),fontWeight: FontWeight.bold),),
+            Divider(color: Colors.black12,indent: 10,endIndent: 10),
+            Text('RATE US',style: TextStyle(fontSize:18,fontFamily: 'Arimo',color: Color.fromRGBO(0,45, 50, 0.50),fontWeight: FontWeight.bold),),
+            Divider(color: Colors.black12,indent: 10,endIndent: 10),
+            Text('USER GUIDE',style: TextStyle(fontSize:18,fontFamily: 'Arimo',color: Color.fromRGBO(0,45, 50, 0.50),fontWeight: FontWeight.bold),),
+            Divider(color: Colors.black12,indent: 10,endIndent: 10),
+            InkWell(child:
+            Text('LOG OUT',style: TextStyle(fontSize:18,fontFamily: 'Arimo',color: Colors.red,fontWeight: FontWeight.bold),),
+              onTap: () async {
+                await GoogleSignIn().signOut();
+                FirebaseAuth.instance.signOut();
+              },
+            )
           ],
         ),
+      ),
+        )
       ),
       appBar: AppBar(
         actions:<Widget> [Container()],
@@ -71,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               children:[
                 Icon(Icons.location_on_outlined,color: Colors.black45,size: 12,),
-            Text('Sathyamangalam',style: TextStyle(fontSize: 11,fontFamily: 'Arimo',fontWeight: FontWeight.w100,color: Colors.black38),textAlign: TextAlign.left,)
+                Text('Sathyamangalam',style: TextStyle(fontSize: 11,fontFamily: 'Arimo',fontWeight: FontWeight.w100,color: Colors.black38),textAlign: TextAlign.left,)
           ]
             )
           ]
