@@ -1,7 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:vehicle/mainpage/HomeScreen.dart';
 import 'package:vehicle/userdetails/LoginPage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -11,20 +17,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Map<int, Color> color =
-    {
-      50:Color.fromRGBO(255,255,255, .1),
-      100:Color.fromRGBO(255,255,255, .2),
-      200:Color.fromRGBO(255,255,255, .3),
-      300:Color.fromRGBO(255,255,255, .4),
-      400:Color.fromRGBO(255,255,255, .5),
-      500:Color.fromRGBO(255,255,255, .6),
-      600:Color.fromRGBO(255,255,255, .7),
-      700:Color.fromRGBO(255,255,255, .8),
-      800:Color.fromRGBO(255,255,255, .9),
-      900:Color.fromRGBO(255,255,255, 1),
-    };
-    MaterialColor colorCustom = MaterialColor(0xff082f48, color);
     return MaterialApp(
       title: 'MyVec',
       debugShowCheckedModeBanner: false,
@@ -38,12 +30,29 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: colorCustom,
+        primarySwatch: Colors.cyan,
       ),
-      home: const LoginPage(),
+      home:  StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if(snapshot.hasError){
+            return Text('Something went wrong');
+          }
+          if(snapshot.connectionState==ConnectionState.active){
+            if(snapshot.data==null){
+              return LoginPage();
+            }
+            else{
+              return HomeScreen();
+            }
+          }
+          return Center(child: CircularProgressIndicator(),);
+        }
+      ),
     );
   }
-}
+  }
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

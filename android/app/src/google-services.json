@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1016551147010",
+    "project_id": "vehicle-assistance-app-a246e",
+    "storage_bucket": "vehicle-assistance-app-a246e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016551147010:android:d9e42011786238e95dc91b",
+        "android_client_info": {
+          "package_name": "com.example.vehicle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016551147010-993e7bhc0r3rdln9dkicq32hfkufum37.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ3C53r4h0VFnyLTTrmeemamto1e92F5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016551147010-993e7bhc0r3rdln9dkicq32hfkufum37.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

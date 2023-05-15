@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:vehicle/mainpage/HomeScreen.dart';
 import 'package:vehicle/userdetails/SignUp.dart';
 import 'package:vehicle/userdetails/passwordreset/PasswordReset.dart';
@@ -18,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _isHidden=true;
   @override
   Widget build(BuildContext context) {
+
     final emailField = Material(
         elevation: 2,
         borderRadius: BorderRadius.circular(20),
@@ -119,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
 
     );
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(title:
       Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -196,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: EdgeInsets.fromLTRB(10,15,10,15),
                         splashColor: Colors.black.withOpacity(0.2),
                         onPressed:(){
-
+                            SignInWithGoogle();
                         } ,
                         child: Row(
 
@@ -235,12 +239,23 @@ class _LoginPageState extends State<LoginPage> {
 
         ),
 
+      );
 
-    );
   }
   void _toggleview(){
     setState(() {
       _isHidden=!_isHidden;
     });
   }
+  SignInWithGoogle() async{
+    GoogleSignInAccount? googleUser= await GoogleSignIn().signIn();
+     GoogleSignInAuthentication? googleAuth= await googleUser?.authentication;
+    AuthCredential credential=GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    UserCredential userCredential= await FirebaseAuth.instance.signInWithCredential(credential);
+    print(userCredential.user?.displayName);
+  }
 }
+

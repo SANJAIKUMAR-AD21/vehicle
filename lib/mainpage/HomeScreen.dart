@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:vehicle/userdetails/LoginPage.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key, }) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -10,10 +13,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
     int _selectedIndex = 0;
-     static const TextStyle optionStyle =
+  final user = FirebaseAuth.instance.currentUser!;
+  final GlobalKey<ScaffoldState> _key=GlobalKey();
+  static const TextStyle optionStyle =
     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
      static const List<Widget> _widgetOptions = <Widget>[
-      secondpage(),
+      home(),
       Text(
         'Index 1: Business',
         style: optionStyle,
@@ -37,7 +42,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:
+      endDrawer: Drawer(
+        child: Column(
+          children: [
+            SizedBox(height: 50,),
+            Text('PROFILE')
+          ],
+        ),
+      ),
+      appBar: AppBar(
+        actions:<Widget> [Container()],
+        title:Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children:[
       Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 5,),
             Row(
               children: [
-                Text(' Full Name',style: TextStyle(fontSize: 14,fontFamily: 'Arimo',fontWeight: FontWeight.bold,color: Colors.black),),
+                Text('${user.displayName}',style: TextStyle(fontSize: 14,fontFamily: 'Arimo',fontWeight: FontWeight.bold,color: Colors.black),),
                 SizedBox(width: 2,),
 
               ],
@@ -59,6 +76,17 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           ]
       ),
+          InkWell(
+              child:CircleAvatar(
+            radius: 20,
+            backgroundImage: NetworkImage(user.photoURL!),
+          ),
+            onTap: (){
+                _key.currentState?.openEndDrawer();
+            },
+          )
+        ]
+      ),
         centerTitle: false,
         elevation: 0.0,
         backgroundColor: Colors.white,
@@ -67,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
         shadowColor: Colors.white,
       ),
       backgroundColor: Colors.white,
+      key: _key,
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -80,17 +109,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_outlined,color:Colors.black,),
-            label: 'Business',
+            label: 'ChatBot',
             backgroundColor: Color.fromRGBO(219, 223, 244, 1.0),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard_outlined,color:Colors.black,),
-            label: 'School',
+            label: 'Sevices',
             backgroundColor: Color.fromRGBO(219, 223, 244, 1.0),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.menu,color:Colors.black,),
-            label: 'School',
+            label: 'More',
             backgroundColor: Color.fromRGBO(219, 223, 244, 1.0),
           ),
         ],
@@ -102,14 +131,32 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class secondpage extends StatelessWidget {
-  const secondpage({Key? key}) : super(key: key);
+class home extends StatelessWidget {
+  const home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Container(
-      child: Text('hi'),
+      child: Column(
+        children:[
+
+        SizedBox(height: 8,),
+        Text('Name'+user.displayName!),
+        SizedBox(height: 8,),
+        Text('Email:'+user.email!),
+
+        IconButton(
+        onPressed: () async{
+          await GoogleSignIn().signOut();
+          FirebaseAuth.instance.signOut();
+        },
+        icon: Icon(Icons.power_settings_new),
+      ),
+    ]
+      )
     );
   }
 }
+
 
