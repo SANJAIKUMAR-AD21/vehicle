@@ -109,13 +109,9 @@ class _LoginPageState extends State<LoginPage> {
         splashColor: Colors.black.withOpacity(0.2),
         onPressed:(){
 
-          if((emailcontroller.text=='jashwanthkumar.ad21@bitsathy.ac.in') && (passwordcontroller.text=='123456')){
 
-
-          }
-          else {
             Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
-          }
+
         } ,
         child: Text("Login",textAlign: TextAlign.center,
           style:TextStyle(fontSize: 15,fontFamily:'Arimo',color: Colors.black,fontWeight: FontWeight.bold) ,

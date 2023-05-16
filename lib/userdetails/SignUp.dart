@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:vehicle/userdetails/OTPVerification.dart';
+import 'package:vehicle/mainpage/HomeScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../models/user_model.dart';
+import 'OTPVerification.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -9,6 +15,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final _auth=FirebaseAuth.instance;
   final _formkey= GlobalKey<FormState>();
   final firstnameEditingController= new TextEditingController();
   final lastnameEditingController= new TextEditingController();
@@ -30,13 +37,10 @@ class _SignUpState extends State<SignUp> {
       style: TextStyle(fontFamily: 'Arimo'),
       keyboardType: TextInputType.name,
       validator: (value){
-        RegExp regex=new RegExp(r'^.{3,}$');
         if(value!.isEmpty){
           return("First name cannot be empty");
         }
-        if(!regex.hasMatch(value)){
-          return("Enter valid name(min. 3 characters");
-        }
+
         return null;
       },
       onSaved: (value)
@@ -127,7 +131,7 @@ class _SignUpState extends State<SignUp> {
       autofocus: false,
       controller: phoneEditingController,
       style: TextStyle(fontFamily: 'Arimo'),
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.text,
       validator: (value){
         if(value!.isEmpty){
           return("Enter your mobile.no");
@@ -245,7 +249,7 @@ class _SignUpState extends State<SignUp> {
         minWidth: MediaQuery.of(context).size.width,
 
         onPressed:() async{
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>OTPVerification()));
+          signUp(emailEditingController.text, passwordEditingController.text,);
         } ,
         child: Text("SignUp",textAlign: TextAlign.center,
           style:TextStyle(fontSize: 15,fontFamily:'Arimo',color: Colors.black,fontWeight: FontWeight.bold) ,
@@ -378,5 +382,39 @@ class _SignUpState extends State<SignUp> {
     setState(() {
       _isHidden2=!_isHidden2;
     });
+  }
+  void signUp(String email,String password) async
+  {
+    if(_formkey.currentState!.validate())
+    {
+      await _auth.createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) => {
+        passDetailsToFirestore()
+      }).catchError((e)
+      {
+        Fluttertoast.showToast(msg: e.message);
+      });
+    }
+  }
+  passDetailsToFirestore() async{
+    //calling firestore
+    //calling user model
+    //calling values
+    FirebaseFirestore firebaseFirestore=FirebaseFirestore.instance;
+    User? user=_auth.currentUser;
+    UserModel userModel=UserModel();
+    userModel.email=user!.email;
+    userModel.uid=user.uid;
+    userModel.firstname=firstnameEditingController.text.trim();
+    userModel.lastname=lastnameEditingController.text.trim();
+    userModel.phoneno=phoneEditingController.text.trim();
+
+    await firebaseFirestore
+        .collection("users")
+        .doc(user.uid)
+        .set(userModel.toMap());
+    Fluttertoast.showToast(msg: "Account created successfully !!");
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>OTPVerification()));
+
   }
 }
