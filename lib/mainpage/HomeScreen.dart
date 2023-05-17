@@ -2,8 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:vehicle/maps/NearbyPlaces.dart';
+import 'package:vehicle/maps/simplemap.dart';
 import 'package:vehicle/userdetails/LoginPage.dart';
 
+import '../maps/CurrentLocation.dart';
 import '../models/user_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,15 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
      static const List<Widget> _widgetOptions = <Widget>[
       Home(),
-       chatbot(),
-      Text(
-        'Index 2: School',
-        style: optionStyle,
-      ),
-       Text(
-         'Index 3: School',
-         style: optionStyle,
-       ),
+       SimpleMapScreen(),
+      NearByPlacesScreen(),
+       CurrentLocationScreen(),
     ];
 
     void _onItemTapped(int index) {
@@ -130,8 +127,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+      child:BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home,color:Colors.black,),
@@ -158,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
+      )
     );
   }
 }
@@ -208,7 +207,8 @@ class _HomeState extends State<Home> {
     );
     return Scaffold(
       backgroundColor: Colors.white,
-      body:Center(
+      body:SingleChildScrollView(
+        child:Center(
         child:Padding(
         padding: EdgeInsets.all(15),
         child:Column(
@@ -228,8 +228,8 @@ class _HomeState extends State<Home> {
                 scrollDirection: Axis.horizontal,
               child:Row(
                 children: [
-
                   Material(
+                      elevation: 1,
                       color:Color.fromRGBO(219, 223, 244, 1.0) ,
                       borderRadius: BorderRadius.circular(20),
                     child:MaterialButton(
@@ -255,6 +255,7 @@ class _HomeState extends State<Home> {
                   ),
                   SizedBox(width: 8,),
                   Material(
+                      elevation: 1,
                       color:Color.fromRGBO(219, 223, 244, 1.0) ,
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
@@ -277,6 +278,7 @@ class _HomeState extends State<Home> {
                   ),
                   SizedBox(width: 8,),
                   Material(
+                      elevation: 1,
                       color:Color.fromRGBO(219, 223, 244, 1.0) ,
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
@@ -302,6 +304,7 @@ class _HomeState extends State<Home> {
                   ),
                   SizedBox(width: 8,),
                   Material(
+                      elevation: 1,
                       color:Color.fromRGBO(219, 223, 244, 1.0) ,
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
@@ -323,6 +326,7 @@ class _HomeState extends State<Home> {
                   ),
                   SizedBox(width: 8,),
                   Material(
+                      elevation: 1,
                       color:Color.fromRGBO(219, 223, 244, 1.0) ,
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
@@ -345,6 +349,7 @@ class _HomeState extends State<Home> {
                   ),
                   SizedBox(width: 8,),
                   Material(
+                      elevation: 1,
                       color:Color.fromRGBO(219, 223, 244, 1.0) ,
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
@@ -367,6 +372,7 @@ class _HomeState extends State<Home> {
                   ),
                   SizedBox(width: 8,),
                   Material(
+                    elevation: 1,
                       color:Color.fromRGBO(219, 223, 244, 1.0) ,
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
@@ -392,10 +398,57 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              )
+              ),
+              SizedBox(height: 8,),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children:[
+                    Text("Our 24/7 Friend",style: TextStyle(fontSize: 20,fontFamily: 'Arimo',color:Color.fromRGBO(
+                        0, 0, 0, 1.0),fontWeight: FontWeight.bold ),textAlign: TextAlign.center,),
+                    Text('')
+                  ]
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                    Image.asset('assets/chat.png',
+                      height: 195,
+                    width: 195,),
+
+                  Column(
+                    children: [
+                      Text("Hi! I'm Vechy",style: TextStyle(fontSize: 20,fontFamily: 'Arimo',color:Color.fromRGBO(
+                          203, 90, 69, 1.0),fontWeight: FontWeight.bold ),textAlign: TextAlign.center,),
+                      Text("Your AI Friend",style: TextStyle(fontSize: 20,fontFamily: 'Arimo',color:Color.fromRGBO(
+                          203, 90, 69, 1.0),fontWeight: FontWeight.bold ),textAlign: TextAlign.center,),
+          SizedBox(height: 10,),
+          Material(
+            elevation: 2.0,
+            borderRadius: BorderRadius.circular(20),
+            color: Color.fromRGBO(249, 177, 122, 1.0),
+            child: MaterialButton(
+              padding: EdgeInsets.fromLTRB(10,5,10,5),
+              splashColor: Colors.black.withOpacity(0.2),
+              onPressed:(){
+
+
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+
+              } ,
+              child: Text("Start a chat!",textAlign: TextAlign.center,
+                style:TextStyle(fontSize: 15,fontFamily:'Arimo',color: Colors.black,fontWeight: FontWeight.bold) ,
+              ),
+            ),
+
+          )
+                    ],
+                  )
+                ],
+              ),
             ]
         )
     )
+      )
       )
     );
   }
