@@ -234,7 +234,7 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(20),
                     child:MaterialButton(
                       onPressed: () {  },
-                      height: 140,
+                      height: 130,
                       minWidth: 100,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -259,19 +259,41 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
                           onPressed: () {  },
-                          height: 140,
+                          height: 130,
                           minWidth: 100,
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children:[
-                                Image.asset('assets/vehicleinfo.png',
+                                Image.asset('assets/docs.png',
+                                  height: 80,
+                                  width: 70,
+                                ),
+
+                                    Text('Docs',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
+
+                              ]
+                          )
+                      )
+                  ),
+                  SizedBox(width: 8,),
+                  Material(
+                      color:Color.fromRGBO(219, 223, 244, 1.0) ,
+                      borderRadius: BorderRadius.circular(20),
+                      child:MaterialButton(
+                          onPressed: () {  },
+                          height: 130,
+                          minWidth: 100,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children:[
+                                Image.asset('assets/mech.png',
                                   height: 70,
                                   width: 70,
                                 ),
                                 Column(
                                   children: [
-                                    Text('My',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
-                                    Text('vehicle',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
+                                    Text('Mech',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
+                                    Text('Services',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
                                   ],
                                 )
                               ]
@@ -284,21 +306,17 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
                           onPressed: () {  },
-                          height: 140,
+                          height: 130,
                           minWidth: 100,
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children:[
-                                Image.asset('assets/vehicleinfo.png',
-                                  height: 70,
+                                Image.asset('assets/payments.png',
+                                  height: 80,
                                   width: 70,
                                 ),
-                                Column(
-                                  children: [
-                                    Text('My',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
-                                    Text('vehicle',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
-                                  ],
-                                )
+                                    Text('Payments',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
+
                               ]
                           )
                       )
@@ -309,21 +327,18 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
                           onPressed: () {  },
-                          height: 140,
+                          height: 130,
                           minWidth: 100,
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children:[
-                                Image.asset('assets/vehicleinfo.png',
-                                  height: 70,
+                                Image.asset('assets/map.png',
+                                  height: 80,
                                   width: 70,
                                 ),
-                                Column(
-                                  children: [
-                                    Text('My',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
-                                    Text('vehicle',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
-                                  ],
-                                )
+
+                                    Text('Map',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
+
                               ]
                           )
                       )
@@ -334,21 +349,18 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
                           onPressed: () {  },
-                          height: 140,
+                          height: 130,
                           minWidth: 100,
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children:[
-                                Image.asset('assets/vehicleinfo.png',
-                                  height: 70,
+                                Image.asset('assets/sos.png',
+                                  height: 80,
                                   width: 70,
                                 ),
-                                Column(
-                                  children: [
-                                    Text('My',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
-                                    Text('vehicle',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
-                                  ],
-                                )
+
+                                    Text('Emergency',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
+
                               ]
                           )
                       )
@@ -359,19 +371,19 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(20),
                       child:MaterialButton(
                           onPressed: () {  },
-                          height: 140,
+                          height: 130,
                           minWidth: 100,
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children:[
-                                Image.asset('assets/vehicleinfo.png',
+                                Image.asset('assets/onroadassist.png',
                                   height: 70,
                                   width: 70,
                                 ),
                                 Column(
                                   children: [
-                                    Text('My',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
-                                    Text('vehicle',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
+                                    Text('On-road',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center,),
+                                    Text('Assist',style: TextStyle(fontFamily: 'Arimo',fontWeight: FontWeight.w900),textAlign: TextAlign.center)
                                   ],
                                 )
                               ]

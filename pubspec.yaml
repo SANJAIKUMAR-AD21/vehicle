@@ -71,7 +71,7 @@ flutter:
   #    - assets/bitlogo.png
   assets:
     - assets/loginpagecar.jpg
-    - assets/img.png
+    - assets/google.png
     - assets/img_2.png
     - assets/otpscreen.png
     - assets/emailreset.png
@@ -80,6 +80,12 @@ flutter:
     - assets/reseticon.png
     - assets/tick.png
     - assets/vehicleinfo.png
+    - assets/docs.png
+    - assets/mech.png
+    - assets/payments.png
+    - assets/map.png
+    - assets/sos.png
+    - assets/onroadassist.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

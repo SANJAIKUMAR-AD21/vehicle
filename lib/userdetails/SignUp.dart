@@ -336,7 +336,7 @@ class _SignUpState extends State<SignUp> {
 
                               children:[
                                 SizedBox(width: 15,),
-                                Image.asset("assets/img.png",
+                                Image.asset("assets/google.png",
                                   height: 27,
                                 ) ,
                                 SizedBox(width: 35,),
