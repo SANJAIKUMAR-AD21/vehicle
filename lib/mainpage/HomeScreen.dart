@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:vehicle/maps/NearbyPlaces.dart';
 import 'package:vehicle/maps/simplemap.dart';
 import 'package:vehicle/userdetails/LoginPage.dart';
+import 'package:http/http.dart' as http;
 
 import '../maps/CurrentLocation.dart';
 import '../models/user_model.dart';
@@ -22,10 +23,10 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key=GlobalKey();
   static const TextStyle optionStyle =
     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-     static const List<Widget> _widgetOptions = <Widget>[
+     static List<Widget> _widgetOptions = <Widget>[
       Home(),
        SimpleMapScreen(),
-      NearByPlacesScreen(),
+        NearbyPlacesWidget(),
        CurrentLocationScreen(),
     ];
 

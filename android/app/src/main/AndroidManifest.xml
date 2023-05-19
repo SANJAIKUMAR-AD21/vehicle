@@ -2,6 +2,7 @@
     package="com.example.vehicle">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
    <application
         android:label="MyVec"
         android:name="${applicationName}"
@@ -34,6 +35,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyBZ3C53r4h0VFnyLTTrmeemamto1e92F5o"/>
+           android:value="AIzaSyB2pkd_JDZkRvm3mruT7QAYjCCnjjCi9IM"/>
     </application>
 </manifest>
